@@ -66,70 +66,52 @@ You can reward players for completing a video ad using the **HandleShowResult** 
 
 ```csharp
 private void HandleShowResult (ShowResult result)
-if (result == ShowResult.Finished)
-{
-	//Add code to reward your player here!
-	//Give coins, etc
-}
+	if (result != ShowResult.Skipped)
+	{
+		//reward your player here!
+	}
 ```
 
-### Rewarded Example Code
-Add a button to your scene that plays an ad, then handles status and callbacks.
+### Rewarded Ad Button Example Code
 
-  1. Select **Game Object > UI > Button** to add a Button in your scene.
-  2. Add the following script to the button.
+[Scipting API can be found here](https://docs.unity3d.com/ScriptReference/Advertisements.Advertisement.html)
 
 ```csharp
 using UnityEngine;
 using UnityEngine.UI;
+
 using UnityEngine.Advertisements;
 
-[RequireComponent(typeof(Button))]
 public class UnityAdsButton : MonoBehaviour
 {
-	public string zoneId;
-
-	Button m_Button;
-
 	void Start ()
 	{
-		m_Button = GetComponent<Button>();
 
-		if (m_Button) m_Button.onClick.AddListener(ShowAdPlacement);
 	}
 
 	void Update ()
 	{
-		if (m_Button)
-		{
-			if (string.IsNullOrEmpty(zoneId)) zoneId = null;
-			m_Button.interactable = Advertisement.IsReady(zoneId);
-		}
+
 	}
 
-	void ShowAdPlacement ()
+	void ShowAd ()
 	{
-		if (string.IsNullOrEmpty(zoneId)) zoneId = null;
-
 		var options = new ShowOptions();
 		options.resultCallback = HandleShowResult;
 
-		Advertisement.Show(zoneId, options);
+		Advertisement.Show("rewardedVideo", options);
 	}
 
 	void HandleShowResult (ShowResult result)
 	{
-		switch(result)
-		{
-		case ShowResult.Finished:
+		if(result == ShowResult.Finished){
 			Debug.Log("Video completed. Offer a reward to the player.");
-			break;
-		case ShowResult.Skipped:
+			
+		}else if(result == ShowResult.Skipped){
 			Debug.LogWarning("Video was skipped.");
-			break;
-		case ShowResult.Failed:
+			
+		}else if(result == ShowResult.Failed){
 			Debug.LogError("Video failed to show.");
-			break;
 		}
 	}
 }
@@ -143,15 +125,15 @@ If you have any questions, please post them to the [Unity Ads forum](http://foru
 
 Log into the [Unity Ads dashboard](https://dashboard.unityads.unity3d.com/Dashboard) using your UDN Account, and locate the project for your game.
 
-![dashboard](images/dashboard-A.png)
+![dashboard](images/dashb-1.png)
 
 Then, select a platform (iOS or Android).
 
-![dashboard](images/dashboard-b.png)
+![dashboard](images/dashb-2.png)
 
 From here, you can modify placements and other game-specific settings.
 
-![dashboard](images/dashboard-c.png)
+![dashboard](images/dashb-3.png)
 
 Additional information on placements can be found in our [placements Documentation](http://unityads.unity3d.com/help/monetization/placements).
 
