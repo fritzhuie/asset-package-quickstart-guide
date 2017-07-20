@@ -48,9 +48,11 @@ Locate the platform-specific GAME ID and save it for later.
 
 2. Next, inititalize Unity ads
 	`Advertisement.Initialize(string gameId)`
+	
+> Note: Unity Ads takes a few seconds to inititalize before videos can be shown
 
 3. You can display an ad by calling the following method:  
-	`Advertisement.Show()`
+	`Advertisement.Show(string placement)`
 
 ### Reward Players for Watching Ads
 
@@ -84,16 +86,7 @@ using UnityEngine.Advertisements;
 
 public class UnityAdsButton : MonoBehaviour
 {
-	void Start ()
-	{
-
-	}
-
-	void Update ()
-	{
-
-	}
-
+	//Call this to show an ad with the "rewardedVideo" placement
 	void ShowAd ()
 	{
 		var options = new ShowOptions();
@@ -102,16 +95,17 @@ public class UnityAdsButton : MonoBehaviour
 		Advertisement.Show("rewardedVideo", options);
 	}
 
+	//HandleShowResult will be called when the ad stops playing
 	void HandleShowResult (ShowResult result)
 	{
 		if(result == ShowResult.Finished){
-			Debug.Log("Video completed. Offer a reward to the player.");
+			Debug.Log("Video completed - Offer a reward to the player");
 			
 		}else if(result == ShowResult.Skipped){
-			Debug.LogWarning("Video was skipped.");
+			Debug.LogWarning("Video was skipped - Do NOT reward the player");
 			
 		}else if(result == ShowResult.Failed){
-			Debug.LogError("Video failed to show.");
+			Debug.LogError("Video failed to show");
 		}
 	}
 }
@@ -127,7 +121,7 @@ Log into the [Unity Ads dashboard](https://dashboard.unityads.unity3d.com/Dashbo
 
 ![dashboard](images/dashb-1.png)
 
-Then, select a platform (iOS or Android).
+Select a platform (iOS or Android).
 
 ![dashboard](images/dashb-2.png)
 
