@@ -1,6 +1,6 @@
 #### Welcome to Unity Ads!
 
-Unity Ads can be enabled directly in **Unity 5.2 or later**.
+Unity Ads can be enabled in **Unity 4.6 or later**.
 
 Click here for Official Unity Ads documentation and additional integration paths:
 
@@ -46,12 +46,13 @@ Locate the platform-specific GAME ID and save it for later.
 1. First, declare the Unity Ads namespace in the header of your script:  
  	`using UnityEngine.Advertisements;`
 
-2. Next, inititalize Unity ads
+2. Next, inititalize Unity ads:
 	`Advertisement.Initialize(string gameId)`
 	
-> Note: Unity Ads takes a few seconds to inititalize before videos can be shown
+> Note: It generally takes 5-10 seconds to inititalize Unity Ads
 
-3. You can display an ad by calling the following method:  
+3. Once Unity Ads is ready, you can show an ad any time:
+	if(
 	`Advertisement.Show(string placement)`
 
 ### Reward Players for Watching Ads
@@ -64,14 +65,19 @@ Typically rewarded ad implementation generally involve one or more of the follow
 - Extra lives at the start of the game
 - Point boosts for the next round
 
-You can reward players for completing a video ad using the **HandleShowResult** callback method in the example above. Be sure to check that the result is **ShowResult.Finished** to verify that the ad was not skipped before granting the reward.
+You can reward players for completing a video ad using the **HandleShowResult** callback method in the example above. Be sure to check that the video was not skipped before granting the reward.
 
 ```csharp
-private void HandleShowResult (ShowResult result)
-	if (result != ShowResult.Skipped)
-	{
+Advertisement.Show("rewardedVideo", options);
+
+...
+
+void HandleShowResult (ShowResult result)
+{
+	if (result != ShowResult.Skipped) {
 		//reward your player here!
 	}
+}
 ```
 
 ### Rewarded Ad Button Example Code
@@ -80,37 +86,36 @@ private void HandleShowResult (ShowResult result)
 
 ```csharp
 using UnityEngine;
-using UnityEngine.UI;
-
 using UnityEngine.Advertisements;
 
 public class UnityAdsButton : MonoBehaviour
 {
-	//Call this to show an ad with the "rewardedVideo" placement
 	void ShowAd ()
 	{
-		var options = new ShowOptions();
-		options.resultCallback = HandleShowResult;
-
-		Advertisement.Show("rewardedVideo", options);
+		if(Advertisement.IsReady("rewardedVideo")) {
+			var options = new ShowOptions();
+			options.resultCallback = HandleShowResult;
+			Advertisement.Show("rewardedVideo", options);
+		}else{
+			Debug.Log("Unity Ads not available");
+		}
 	}
 
 	//HandleShowResult will be called when the ad stops playing
 	void HandleShowResult (ShowResult result)
 	{
-		if(result == ShowResult.Finished){
+		if(result == ShowResult.Finished) {
 			Debug.Log("Video completed - Offer a reward to the player");
 			
-		}else if(result == ShowResult.Skipped){
+		}else if(result == ShowResult.Skipped) {
 			Debug.LogWarning("Video was skipped - Do NOT reward the player");
 			
-		}else if(result == ShowResult.Failed){
+		}else if(result == ShowResult.Failed) {
 			Debug.LogError("Video failed to show");
 		}
 	}
 }
 ```
-Then press the editor Play button to test the Unity Ads Button integration.
 
 Additional examples and troubleshooting can be found in our [monetization documentation](http://unityads.unity3d.com/help/monetization/integration-guide-unity).
 If you have any questions, please post them to the [Unity Ads forum](http://forum.unity3d.com/forums/unity-ads.67) or contact us at unityads-support@unity3d.com
