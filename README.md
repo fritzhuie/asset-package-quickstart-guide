@@ -74,7 +74,7 @@ private void HandleShowResult (ShowResult result)
 
 ### Rewarded Ad Button Example Code
 
-[Scipting API can be found here](https://docs.unity3d.com/ScriptReference/Advertisements.Advertisement.html)
+[The Unity Ads Scipting API can be found here](https://docs.unity3d.com/ScriptReference/Advertisements.Advertisement.html)
 
 ```csharp
 using UnityEngine;
