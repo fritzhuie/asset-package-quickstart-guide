@@ -9,11 +9,11 @@ Click here for Official Unity Ads documentation and additional integration paths
 - [Native iOS integration](http://unityads.unity3d.com/help/monetization/integration-guide-ios)
 - [Native Android integration](http://unityads.unity3d.com/help/monetization/integration-guide-android)
 
-# INTEGRATING UNITY ADS
+# INTEGRATING UNITY ADS WITH THE ASSET PACKAGE
 
 > Updated: July 20th, 2017
 
-### Enable Ads in Unity
+### Import the Unity Ads Asset Package
 
 First, set the build targets and enable Unity Ads in the Services Panel.
 
