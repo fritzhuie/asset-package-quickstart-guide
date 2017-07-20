@@ -23,22 +23,32 @@ First, set the build targets and enable Unity Ads in the Services Panel.
 
 ![Build Settings](images/build-settings.png)
 
-Once that's done, select **Window > Services** 
-Select an Organization from the drop down menu:
-Click **Create**
+Next, import the Unity Ads Asset Package into your project.
 
-![Services Window](images/servicesorg.png)
+![Asset package](images/asset-package.png)
 
-Click **Ads**, and enable the SDK in your project:
+### Create a Game ID in the Unity Ads dashboard
 
-![Services Window > Ads](images/services.png)
+Navigate to https://dashboard.unityads.unity3d.com and create a new game project.
+
+![Create a new game project](images/new1.png)
+
+Select iOS, Android, or both.
+
+![Select your platform](images/new2.png)
+
+Locate the platform-specific GAME ID and save it for later.
+
+![Locate your game ID](images/new4.png)
 
 ### Add the code
 
 1. First, declare the Unity Ads namespace in the header of your script:  
  	`using UnityEngine.Advertisements;`
 
-2. You can display an ad by calling the following method:  
+2. Next, inititalize the
+
+3. You can display an ad by calling the following method:  
 	`Advertisement.Show()`
 
 ### Example Code
