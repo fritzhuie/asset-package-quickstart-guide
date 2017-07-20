@@ -46,12 +46,34 @@ Locate the platform-specific GAME ID and save it for later.
 1. First, declare the Unity Ads namespace in the header of your script:  
  	`using UnityEngine.Advertisements;`
 
-2. Next, inititalize the
+2. Next, inititalize Unity ads
+	`Advertisement.Initialize(string gameId)`
 
 3. You can display an ad by calling the following method:  
 	`Advertisement.Show()`
 
-### Example Code
+### Reward Players for Watching Ads
+
+Rewarding players can add to user engagement, resulting in higher revenue!
+
+Typically rewarded ad implementation generally involve one or more of the following: 
+
+- In-game currency or consumables
+- Extra lives at the start of the game
+- Point boosts for the next round
+
+You can reward players for completing a video ad using the **HandleShowResult** callback method in the example above. Be sure to check that the result is **ShowResult.Finished** to verify that the ad was not skipped before granting the reward.
+
+```csharp
+private void HandleShowResult (ShowResult result)
+if (result == ShowResult.Finished)
+{
+	//Add code to reward your player here!
+	//Give coins, etc
+}
+```
+
+### Rewarded Example Code
 Add a button to your scene that plays an ad, then handles status and callbacks.
 
   1. Select **Game Object > UI > Button** to add a Button in your scene.
@@ -112,31 +134,10 @@ public class UnityAdsButton : MonoBehaviour
 	}
 }
 ```
-Then simply press the editor Play button to test the Unity Ads Button integration.
+Then press the editor Play button to test the Unity Ads Button integration.
 
 Additional examples and troubleshooting can be found in our [monetization documentation](http://unityads.unity3d.com/help/monetization/integration-guide-unity).
 If you have any questions, please post them to the [Unity Ads forum](http://forum.unity3d.com/forums/unity-ads.67) or contact us at unityads-support@unity3d.com
-
-### Reward Players for Watching Ads
-
-Rewarding players can add to user engagement, resulting in higher revenue!
-
-Typically rewarded ad implementation generally involve one or more of the following: 
-
-- In-game currency or consumables
-- Extra lives at the start of the game
-- Point boosts for the next round
-
-You can reward players for completing a video ad using the **HandleShowResult** callback method in the example above. Be sure to check that the result is **ShowResult.Finished** to verify that the ad was not skipped before granting the reward.
-
-```csharp
-private void HandleShowResult (ShowResult result)
-if (result == ShowResult.Finished)
-{
-	//Add code to reward your player here!
-	//Give coins, etc
-}
-```
 
 ### Manage Settings in the [Ads Dashboard](https://dashboard.unityads.unity3d.com/Dashboard)
 
