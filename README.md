@@ -128,7 +128,7 @@ Log into the [Unity Ads dashboard](https://dashboard.unityads.unity3d.com/Dashbo
 
 Select a platform (iOS or Android).
 
-![dashboard](images/ads-dashb-2.png)
+![dashboard](images/dashb2.png)
 
 From here, you can modify placements and other game-specific settings.
 
