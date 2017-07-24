@@ -125,17 +125,14 @@ If you have any questions, please post them to the [Unity Ads forum](http://foru
 Log into the [Unity Ads dashboard](https://dashboard.unityads.unity3d.com/Dashboard) using your UDN Account, and locate the project for your game.
 
 ![dashboard](images/ads-dashb-1.png)
-![Locate your game ID](images/new4.png)
 
 Select a platform (iOS or Android).
 
 ![dashboard](images/ads-dashb-2.png)
-![Locate your game ID](images/new4.png)
 
 From here, you can modify placements and other game-specific settings.
 
 ![dashboard](images/ads-dashb-3.png)
-![Locate your game ID](images/new4.png)
 
 Additional information on placements can be found in our [placements Documentation](http://unityads.unity3d.com/help/monetization/placements).
 
