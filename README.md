@@ -13,21 +13,9 @@ Click here for Official Unity Ads documentation and additional integration paths
 
 > Updated: July 20th, 2017
 
-### Import the Unity Ads Asset Package
-
-First, set the build targets and enable Unity Ads in the Services Panel.
-
-1. Open your game project, or create a new Unity project.
-2. Select **Edit > Build Settings**, and set the platform to iOS or Android.
-3. Enable Ads in the Unity Services window.
-
-![Build Settings](images/build-settings.png)
-
-Next, import the Unity Ads Asset Package into your project.
-
-![Asset package](images/asset-package.png)
-
 ### Create a Game ID in the Unity Ads dashboard
+
+BEfore integrating, you'll need to create a Unity Ads game ID.
 
 Navigate to https://dashboard.unityads.unity3d.com and create a new game project.
 
@@ -40,6 +28,22 @@ Select iOS, Android, or both.
 Locate the platform-specific GAME ID and save it for later.
 
 ![Locate your game ID](images/new4.png)
+
+Additional information on placements and dashboard settings can be found in our [placements Documentation](http://unityads.unity3d.com/help/monetization/placements).
+
+### Integrate the Unity Ads Asset Package
+
+Befet the build targets and enable Unity Ads in the Services Panel.
+
+1. Open your game project, or create a new Unity project.
+2. Select **Edit > Build Settings**, and set the platform to iOS or Android.
+3. Enable Ads in the Unity Services window.
+
+![Build Settings](images/build-settings.png)
+
+Next, import the Unity Ads Asset Package into your project.
+
+![Asset package](images/asset-package.png)
 
 ### Add the code
 
@@ -119,23 +123,5 @@ public class UnityAdsButton : MonoBehaviour
 
 Additional examples and troubleshooting can be found in our [monetization documentation](http://unityads.unity3d.com/help/monetization/integration-guide-unity).
 If you have any questions, please post them to the [Unity Ads forum](http://forum.unity3d.com/forums/unity-ads.67) or contact us at unityads-support@unity3d.com
-
-### Manage Settings in the [Ads Dashboard](https://dashboard.unityads.unity3d.com/Dashboard)
-
-Log into the [Unity Ads dashboard](https://dashboard.unityads.unity3d.com/Dashboard) using your UDN Account, and locate the project for your game.
-
-![dashboard](images/ads-dashb-1.png)
-
-Select a platform (iOS or Android).
-
-![dashboard](images/ads-dashb-2.png)
-
-From here, you can modify placements and other game-specific settings.
-
-![dashboard](images/ads-dashb-3.png)
-
-Additional information on placements can be found in our [placements Documentation](http://unityads.unity3d.com/help/monetization/placements).
-
-For additional info, please see the [Unity Ads forum](http://forum.unity3d.com/forums/unity-ads.67), [Unity Ads Knowledge Base](http://unityads.unity3d.com/help/monetization/getting-started), [Unity Ads Documentation](https://docs.unity3d.com/Manual/UnityAdsHowTo.html), [Unity Support Knowledge Base](https://support.unity3d.com/hc/en-us/sections/201163835-Ads), or contact us directly at unityads-support@unity3d.com.
 
 
