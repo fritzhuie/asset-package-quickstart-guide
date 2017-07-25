@@ -17,7 +17,7 @@ Click here for Unity Ads documentation and additional integration paths:
 
 Before integrating, you'll need to create a Unity Ads game ID.
 
-1. Navigate to <a href="https://dashboard.unityads.unity3d.com" target="_blank">https://dashboard.unityads.unity3d.com</a> https://dashboard.unityads.unity3d.com and create a new game project.
+1. Navigate to <a href="https://dashboard.unityads.unity3d.com" target="_blank">https://dashboard.unityads.unity3d.com</a> and create a new game project.
 
 ![Create a new game project](images/new1.png)
 
