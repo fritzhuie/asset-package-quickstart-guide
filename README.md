@@ -15,17 +15,17 @@ Click here for Official Unity Ads documentation and additional integration paths
 
 ### Create a Game ID in the Unity Ads dashboard
 
-BEfore integrating, you'll need to create a Unity Ads game ID.
+Before integrating, you'll need to create a Unity Ads game ID.
 
-Navigate to https://dashboard.unityads.unity3d.com and create a new game project.
+1. Navigate to https://dashboard.unityads.unity3d.com and create a new game project.
 
 ![Create a new game project](images/new1.png)
 
-Select iOS, Android, or both.
+2. Select iOS, Android, or both.
 
 ![Select your platform](images/new2.png)
 
-Locate the platform-specific GAME ID and save it for later.
+3. Locate the platform-specific GAME ID and save it for later.
 
 ![Locate your game ID](images/new4.png)
 
@@ -33,7 +33,7 @@ Additional information on placements and dashboard settings can be found in our 
 
 ### Integrate the Unity Ads Asset Package
 
-Befet the build targets and enable Unity Ads in the Services Panel.
+First, set the build target to be either Android or iOS.
 
 1. Open your game project, or create a new Unity project.
 2. Select **Edit > Build Settings**, and set the platform to iOS or Android.
@@ -41,7 +41,7 @@ Befet the build targets and enable Unity Ads in the Services Panel.
 
 ![Build Settings](images/build-settings.png)
 
-Next, import the Unity Ads Asset Package into your project.
+Next, import the Unity Ads Asset Package into your project through the Asset Store window.
 
 ![Asset package](images/asset-package.png)
 
@@ -50,35 +50,43 @@ Next, import the Unity Ads Asset Package into your project.
 1. First, declare the Unity Ads namespace in the header of your script:  
  	`using UnityEngine.Advertisements;`
 
-2. Next, inititalize Unity ads:
+2. Next, inititalize Unity Ads in your script:
 	`Advertisement.Initialize(string gameId)`
 	
-> Note: It generally takes 5-10 seconds to inititalize Unity Ads
+> Note: This call will usually go in the Start() function that's already defined
 
 3. Once Unity Ads is ready, you can show an ad any time:
-	if(
-	`Advertisement.Show(string placement)`
+	```csharp
+	if( Advertisement.IsReady() )
+	{
+		Advertisement.Show(string placement)
+	}
+	```
+	
+> Note: It generally takes a few seconds to inititalize Unity Ads
 
 ### Reward Players for Watching Ads
 
 Rewarding players can add to user engagement, resulting in higher revenue!
 
-Typically rewarded ad implementation generally involve one or more of the following: 
+Typically, a rewarded ad implementation generally involves one or more of the following: 
 
 - In-game currency or consumables
 - Extra lives at the start of the game
 - Point boosts for the next round
 
-You can reward players for completing a video ad using the **HandleShowResult** callback method in the example above. Be sure to check that the video was not skipped before granting the reward.
+You can reward players for completing a video ad using the **HandleShowResult** callback method in the example below. Be sure to check that the video was finished before granting the reward.
 
 ```csharp
+var options = new ShowOptions();
+options.resultCallback = HandleShowResult;
 Advertisement.Show("rewardedVideo", options);
 
 ...
 
 void HandleShowResult (ShowResult result)
 {
-	if (result != ShowResult.Skipped) {
+	if (result == ShowResult.Finished) {
 		//reward your player here!
 	}
 }
@@ -110,7 +118,7 @@ public class UnityAdsButton : MonoBehaviour
 			options.resultCallback = HandleShowResult;
 			Advertisement.Show("rewardedVideo", options);
 		}else{
-			Debug.Log("Unity Ads not available");
+			Debug.Log("Rewarded Video not available");
 		}
 	}
 
