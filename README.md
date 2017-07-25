@@ -94,6 +94,15 @@ using UnityEngine.Advertisements;
 
 public class UnityAdsButton : MonoBehaviour
 {
+	//Inititalize on start
+	void Start () 
+	{
+		if (Advertisement.isSupported) {
+			Advertisement.Initialize (gameId, true);
+		}
+	}
+
+	//show an ad with the "rewardedVideo" placement by calling this method
 	void ShowAd ()
 	{
 		if(Advertisement.IsReady("rewardedVideo")) {
@@ -105,7 +114,7 @@ public class UnityAdsButton : MonoBehaviour
 		}
 	}
 
-	//HandleShowResult will be called when the ad stops playing
+	//HandleShowResult will be called when the ad stops playing, and pass the result enumerator
 	void HandleShowResult (ShowResult result)
 	{
 		if(result == ShowResult.Finished) {
